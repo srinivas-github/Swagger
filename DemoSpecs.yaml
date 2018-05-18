@@ -1,0 +1,87 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Simple Artist API"
+  description: An Simple API to understand the Swagger specification in greater details.
+schemes: 
+- https
+host: example.io
+basePath: /v1
+securityDefinitions:
+  UserSecurity:
+    type: basic
+security:
+  - UserSecurity: []
+
+  
+paths: 
+  /artists:
+    get:
+      description: returns the list of artists
+      parameters:
+        - name: limit
+          in: query
+          type: integer
+          description: limits the number of items on a page
+          
+        - name: offset
+          in: query
+          type: integer
+          description: limits the number of artists to be displayed.
+          
+      responses:
+        200:
+          description: Successfully returned the artists
+          schema:
+            type: array
+            items: 
+              type: object
+              required:
+                - username 
+            properties:
+              artist_name:
+                type : string
+              artitst_genre:
+                type: string
+              albums_recorded:
+                type: integer
+              username:
+                type: string
+        400:
+          description: Invalid request
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+        
+    
+    post:
+      description: lets user to post a new artist
+      parameters:
+        - name: artist
+          in: body
+          description: Create a new artist in database
+          schema:
+            type: object
+            required:
+              - username
+            properties:
+              artist_name:
+                type : string
+              artitst_genre:
+                type: string
+              albums_recorded:
+                type: integer
+      responses:
+        200:
+          description: Successfully created a artist
+        400:
+          description: Invalid request
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            
+  
