@@ -34,6 +34,8 @@ paths:
         400:
           description: Invalid characters in "user" were provided.
 ```
+For more info refer to [SwaggerHub!](https://app.swaggerhub.com/help/tutorials/writing-swagger-definitions?_ga=2.170048608.1735051491.1526628180-80893549.1526451946)
+
 In the example above we describe a simple “Hello World API”. It has a single URL exposed – “/hello/{user}”. “user” is the single parameter to the API, defined as part of the path, and we say it’s a string. We also describe the successful response, and mention it’s a string as well. A generic 400 error can be received if the “user” contained invalid characters. You can also see that throughout the operation itself we provide additional documentation.
 
 # Swagger in a nutshell
